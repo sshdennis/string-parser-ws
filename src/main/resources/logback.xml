@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="false" debug="false">
+    <contextName>mp-logback</contextName>
+
+    <property name="logPath" value="${LOG_DIR:-./log/}"/>
+    <property name="fileName" value="string-parser-ws.log"/>
+    <property name="pattern" value="[%d{yyyy/MM/dd HH:mm:ss Z}][%thread][%-5level] %logger:%line : %msg%n"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}${fileName}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logPath}${fileName}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache" level="ERROR" additivity="true"/>
+    <logger name="org.apache.kafka" level="INFO" additivity="true"/>
+    <logger name="org.eclipse" level="ERROR" additivity="true"/>
+    <logger name="javax" level="ERROR" additivity="true"/>
+    <logger name="org.springframework" level="INFO" additivity="true"/>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+</configuration>
