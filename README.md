@@ -6,6 +6,12 @@
 http://{host}:{port}/string-parser-ws/
 ```
 
+## Health check
+
+```
+http://{host}:{port}/string-parser-ws/status
+```
+
 ### Page sample
 
 #### parsing success

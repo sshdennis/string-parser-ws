@@ -27,9 +27,6 @@
     </appender>
 
     <logger name="org.apache" level="ERROR" additivity="true"/>
-    <logger name="org.apache.kafka" level="INFO" additivity="true"/>
-    <logger name="org.eclipse" level="ERROR" additivity="true"/>
-    <logger name="javax" level="ERROR" additivity="true"/>
     <logger name="org.springframework" level="INFO" additivity="true"/>
 
     <root level="INFO">
